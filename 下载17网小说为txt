@@ -1,0 +1,13 @@
+from urllib import request 
+import re
+url='http://www.17k.com/chapter/2437599/29390199.html'
+request=request.urlopen(url)
+response=request.read().decode('utf-8')
+response=repr(response)
+regx=r'<div class="readAreaBox content">.+<div class="author-say"></div>'
+pattern=re.compile(regx)
+text=re.findall(pattern,response)
+f=open('xiaoshuo.txt','w')
+for t in text:
+	f.write(t)
+f.close()
