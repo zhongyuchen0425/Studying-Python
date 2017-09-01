@@ -1,0 +1,21 @@
+# 图片地址：https://imgsa.baidu.com/forum/w%3D580/sign=b80d4bec4390f60304b09c4f0913b370/cf80ec2297dda1449fbbab6fbbb7d0a20df48612.jpg
+# 图片地址：https://imgsa.baidu.com/forum/w%3D580/sign=21b14f4cc411728b302d8c2af8fec3b3/49441e2662d0f703613e550101fa513d2797c53d.jpg
+# 贴吧地址：https://tieba.baidu.com/p/5054924767
+from urllib import request
+import urllib
+import re
+url='https://tieba.baidu.com/p/5054924767'
+request=urllib.request.urlopen(url)
+response=request.read()
+response=repr(response)
+regx='https://imgsa.baidu.com/forum/w%3D580/sign=.+?.\jpg'
+
+
+pattern=re.compile(regx)
+get_image=re.findall(pattern,response)
+
+
+page=1
+for image in get_image:
+	urllib.request.urlretrieve(image,'%s.jpg'%page)
+	page=page+1
