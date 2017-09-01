@@ -1,0 +1,7 @@
+from urllib import request 
+url="https://pic2.zhimg.com/v2-16216e45ddc483b9edb4883917af9a35_b.png"
+Request=request.urlopen(url)
+Response=Request.read()
+f=open("1.png","wb")
+f.write(Response)
+f.close()
